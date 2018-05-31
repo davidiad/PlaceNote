@@ -9,8 +9,8 @@ PlayerSettings:
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
   targetDevice: 2
-  useOnDemandResources: 0
-  accelerometerFrequency: 60
+  useOnDemandResources: 1
+  accelerometerFrequency: 100
   companyName: DefaultCompany
   productName: PlaceNoteTest5-29-18
   defaultCursor: {fileID: 0}
@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    iOS: com.davidiad.PN
+    iOS: com.davidiad.placenote
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16

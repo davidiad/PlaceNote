@@ -7,8 +7,8 @@ public class GPS : MonoBehaviour {
 
     public static GPS Instance { set; get;  }
 
-    public float longtitude;
-    public float latitude;
+    public double longtitude;
+    public double latitude;
 
 	void Start () {
         Instance = this;
@@ -23,7 +23,7 @@ public class GPS : MonoBehaviour {
             yield break;
         }
 
-        Input.location.Start();
+        Input.location.Start(0.5f, 0.5f);
         int maxWait = 20;
         while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0) {
             yield return new WaitForSeconds(1);
@@ -47,6 +47,6 @@ public class GPS : MonoBehaviour {
     }
 
     void Update () {
-		
+        StartCoroutine(StartLocationService());
 	}
 }
