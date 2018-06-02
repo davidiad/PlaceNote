@@ -5,6 +5,8 @@ using UnityEngine.XR.iOS;
 
 public class PaintManager : MonoBehaviour
 {
+    private Mesh mesh; // save particles in a mesh
+
     public ParticleSystem particleSystemTemplate;
 
     private bool newPaintVertices;
@@ -35,6 +37,7 @@ public class PaintManager : MonoBehaviour
         ps = Instantiate(particleSystemTemplate);
         currVertices = new List<Vector3>();
         paintColor = Color.green;
+        mesh = new Mesh();
     }
 
     // Update is called once per frame
@@ -50,7 +53,7 @@ public class PaintManager : MonoBehaviour
                 {
                     particles[index].position = vtx;
                     particles[index].color = paintColor;
-                    particles[index].size = 0.1f;
+                    particles[index].size = 0.05f;
                     index++;
                 }
                 ps.SetParticles(particles, currVertices.Count);
@@ -93,9 +96,33 @@ public class PaintManager : MonoBehaviour
         currVertices = new List<Vector3>();
     }
 
+    public Mesh getMesh()
+    {
+        // get all the particles, and save them in a mesh
+        foreach (ParticleSystem partSys in particleSystemList)
+        {/*
+            ParticleSystem.Particle[] myParticles = (ParticleSystem)GetComponent("ParticleSystem");
+            partSys.GetParticles(myParticles);
+            foreach (Particle particle in myParticles)
+            {
+
+            }
+
+            ParticleSystem.Particle[] currentParticles = new ParticleSystem.Particle[partSys.particleCount]; 
+            partSys.GetParticles(currentParticles);
+            foreach (Particle particle in currentParticles) 
+            {
+                
+            }
+            Vector3 [] verts = partSys.GetParticles()
+            */
+        }
+        return mesh;
+    }
+
     private void ARFrameUpdated(UnityARCamera arCamera)
     {
-        Vector3 paintPosition = GetCameraPosition(arCamera) + (Camera.main.transform.forward * 0.2f);
+        Vector3 paintPosition = GetCameraPosition(arCamera) + (Camera.main.transform.parent.transform.forward * 0.2f);
         if (Vector3.Distance(paintPosition, previousPosition) > 0.025f)
         {
             if (paintingOn) currVertices.Add(paintPosition);

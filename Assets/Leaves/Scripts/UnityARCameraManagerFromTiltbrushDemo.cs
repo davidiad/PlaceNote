@@ -10,7 +10,7 @@ public class UnityARCameraManager : MonoBehaviour
 
     [Header("AR Config Options")]
     public UnityARAlignment startAlignment = UnityARAlignment.UnityARAlignmentGravity;
-    public UnityARPlaneDetection planeDetection = UnityARPlaneDetection.Horizontal;
+    public UnityARPlaneDetection planeDetection = UnityARPlaneDetection.HorizontalAndVertical;
     public bool getPointCloud = true;
     public bool enableLightEstimation = true;
 
